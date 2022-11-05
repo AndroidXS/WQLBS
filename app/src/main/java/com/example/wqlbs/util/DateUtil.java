@@ -6,7 +6,7 @@ package com.example.wqlbs.util;
  *
  * @Author xushu
  * 创建时间: 2022/4/10 21:50
- * 用途：
+ * 用途：计算两个时间戳之间的间隔
  * 修改记录：
  *************************************/
 public class DateUtil {

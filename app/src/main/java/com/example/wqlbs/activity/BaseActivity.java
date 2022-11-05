@@ -19,14 +19,17 @@ import androidx.viewbinding.ViewBinding;
  * 修改记录：
  *************************************/
 abstract class BaseActivity<V extends ViewBinding> extends Activity {
+    protected V binding;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getViewBinding().getRoot());
+        binding = getViewBinding();
+        setContentView(binding.getRoot());
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        initView();
     }
 
     abstract void initView();

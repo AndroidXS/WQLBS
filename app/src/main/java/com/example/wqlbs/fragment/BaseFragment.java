@@ -22,9 +22,17 @@ import androidx.viewbinding.ViewBinding;
  * 修改记录：
  *************************************/
 public abstract class BaseFragment <V extends ViewBinding> extends Fragment {
+    protected V binding;
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        return getViewBinding().getRoot();
+        binding = getViewBinding();
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView();
     }
 
     abstract void initView();
